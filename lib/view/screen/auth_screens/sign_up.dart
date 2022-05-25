@@ -147,7 +147,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     Text('Do you agree ti our '),
                     InkWell(
                       onTap: () {
-                        Get.offAndToNamed(Routes.privacyPolicy);
+                        Get.toNamed(Routes.privacyPolicy);
                       },
                       child: Text('Privacy Policy',
                           style: TextStyle(

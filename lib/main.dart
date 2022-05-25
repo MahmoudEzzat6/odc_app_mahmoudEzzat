@@ -4,8 +4,10 @@ import 'package:odc_app/constant/theme.dart';
 import 'package:odc_app/routes/routs.dart';
 import 'package:odc_app/view/screen/auth_screens/login.dart';
 import 'package:odc_app/view/screen/auth_screens/sign_up.dart';
-import 'package:odc_app/view/screen/forget_password.dart';
+import 'package:odc_app/view/screen/password_screen/forget_password.dart';
 import 'package:odc_app/view/screen/on_boarding_screen.dart';
+import 'package:odc_app/view/screen/password_screen/new_password.dart';
+import 'package:odc_app/view/screen/password_screen/verify_screen.dart';
 import 'package:odc_app/view/screen/privacy_policy.dart';
 
 void main() {
@@ -25,8 +27,9 @@ class MyApp extends StatelessWidget {
 
         primarySwatch: Colors.orange,
       ),
-      initialRoute: AppRoute.onBoarding,
-      getPages:AppRoute.routes
+      home: NewPasswordScreen(),
+      // initialRoute: AppRoute.splashScreen,
+      // getPages:AppRoute.routes
     );
   }
 }
