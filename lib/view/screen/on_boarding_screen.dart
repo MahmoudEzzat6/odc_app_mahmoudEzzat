@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/get_navigation.dart';
 import 'package:odc_app/constant/theme.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../components/components.dart';
+import '../../routes/routs.dart';
 
 var boardingController = PageController();
 var isLast = false;
@@ -47,18 +50,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.white,
-        actions: [
-          // TextButton(
-          //     onPressed:() {submit(context);},
-          //     child: const Text(
-          //       'SKIP',
-          //       style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white),
-          //     ))
-        ],
-      ),
+
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
@@ -89,94 +81,85 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     );
   }
 
-  Widget buildBoardingItem(BoardingModel model) => Column(
-    mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Center(
-            child: Image(
-                image: AssetImage(model.images), height: 242.07, width: 282.3),
-          ),
-          SizedBox(height: 45.0),
-          Padding(
-            padding: const EdgeInsets.only(right: 55.0,left: 55),
-            child: Text(
-              model.title,
-              style: const TextStyle(
-                fontWeight: FontWeight.w700,
-                fontSize: 24.0,
-                color: Colors.black,
-              ),
+  Widget buildBoardingItem(BoardingModel model) => SizedBox(
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Center(
+              child: Image(
+                  image: AssetImage(model.images), height: 242.07, width: 282.3),
             ),
-          ),
-          const SizedBox(height: 11.0),
-          Padding(
-            padding: const EdgeInsets.only(right: 45.0,left: 45),
-            child: Text(
-              model.body,
-              style: const TextStyle(
-                  fontWeight: FontWeight.w400,
-                  fontSize: 13.0,
-                  color: Colors.grey),
-            ),
-          ),
-          SizedBox(height: 65),
-          SmoothPageIndicator(
-            controller: boardingController,
-            count: boardingmodel.length,
-            effect: const SwapEffect(spacing: 12.0,dotHeight: 8,dotWidth: 8,dotColor: Colors.grey,activeDotColor: mainColor),
-          ),
-          const SizedBox(height: 46.45,),
-          Row(
-            children: [
-              Container(
-                height: 50,
-                width: 154.0,
-                decoration: BoxDecoration(
-                  color: mainColor,
-                  borderRadius: BorderRadius.circular(5.0),
+            SizedBox(height: 45.0),
+            Padding(
+              padding: const EdgeInsets.only(right: 55.0,left: 55),
+              child: Text(
+                model.title,
+                style: const TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 24.0,
+                  color: Colors.black,
                 ),
-                child: defaultButton(
-                    text: 'Join Now',
-                    textColor: Colors.white,
-                    isUpper: false,
-                    onTap: () {
-                      //  Get.offAndToNamed(Routes.loginScreen);
-                    }),
               ),
-              const SizedBox(
-                width: 30.0,
+            ),
+            const SizedBox(height: 11.0),
+            Padding(
+              padding: const EdgeInsets.only(right: 45.0,left: 45),
+              child: Text(
+                model.body,
+                style: const TextStyle(
+                    fontWeight: FontWeight.w400,
+                    fontSize: 13.0,
+                    color: Colors.grey),
               ),
-              Center(
-                child: Container(
+            ),
+            SizedBox(height: 65),
+            SmoothPageIndicator(
+              controller: boardingController,
+              count: boardingmodel.length,
+              effect: const SwapEffect(spacing: 12.0,dotHeight: 8,dotWidth: 8,dotColor: Colors.grey,activeDotColor: mainColor),
+            ),
+            const SizedBox(height: 46.45,),
+            Row(
+              children: [
+                Container(
                   height: 50,
                   width: 154.0,
                   decoration: BoxDecoration(
-                      color: Colors.white,
-                      border: Border.all(color: mainColor),
-                      borderRadius: BorderRadius.circular(5.0)),
+                    color: mainColor,
+                    borderRadius: BorderRadius.circular(5.0),
+                  ),
                   child: defaultButton(
-                      text: 'Log in',
-                      textColor: mainColor,
+                      text: 'Join Now',
+                      textColor: Colors.white,
                       isUpper: false,
                       onTap: () {
-                        //  Get.offAndToNamed(Routes.signupScreen);
+                        Get.offAndToNamed(Routes.loginScreen);
                       }),
                 ),
-              ),
-            ],
-          ),
-        ],
-      );
-// void submit(context){
-//   CashHelper.saveData(key: 'Boarding', value: true).then((value) {
-//     if (value=true) {
-//       Navigator.pushAndRemoveUntil(context,
-//         MaterialPageRoute(builder: (BuildContext context) => LoginScreen(),
-//         ),
-//             (Route<dynamic>route) => false,
-//       );
-//     }
-//   });
-//
-// }
+                const SizedBox(
+                  width: 30.0,
+                ),
+                Center(
+                  child: Container(
+                    height: 50,
+                    width: 124.0,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        border: Border.all(color: mainColor),
+                        borderRadius: BorderRadius.circular(5.0)),
+                    child: defaultButton(
+                        text: 'Log in',
+                        textColor: mainColor,
+                        isUpper: false,
+                        onTap: () {
+                            Get.offAndToNamed(Routes.signupScreen);
+                        }),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+  );
+
 }

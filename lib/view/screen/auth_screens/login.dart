@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:odc_app/components/components.dart';
 import 'package:odc_app/constant/theme.dart';
+
+import '../../../routes/routs.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -9,29 +12,40 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     TextEditingController emailController = TextEditingController();
     TextEditingController passwordController = TextEditingController();
-    return SafeArea(
+    var formKey = GlobalKey<FormState>();
+    return Form(
+      key: formKey,
       child: Scaffold(
         backgroundColor: Colors.white,
         body: Padding(
-          padding: const EdgeInsets.all(20.0),
+          padding: const EdgeInsets.all(25.0),
           child: SizedBox(
             child: SingleChildScrollView(
-              physics: const NeverScrollableScrollPhysics(),
+              physics: const BouncingScrollPhysics(),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Stack(children:const [
+                  Stack(children: const [
                     Padding(
                       padding: EdgeInsets.only(left: 235),
-                      child: Image(image: AssetImage('assets/images/rectangleup.png')),
+                      child: Image(
+                          image: AssetImage('assets/images/rectangleup.png')),
                     ),
                     Padding(
                       padding: EdgeInsets.only(left: 248.0),
-                      child: Image(image: AssetImage('assets/images/rectangleshadow.png')),
+                      child: Image(
+                          image:
+                              AssetImage('assets/images/rectangleshadow.png')),
                     ),
-                    Image(image: AssetImage('assets/images/logo.png'),width: 81,height: 42,)
-                  ] ),
-                  SizedBox(height: 85.0,),
+                    Image(
+                      image: AssetImage('assets/images/logo.png'),
+                      width: 81,
+                      height: 42,
+                    )
+                  ]),
+                  SizedBox(
+                    height: 85.0,
+                  ),
                   Row(
                     children: const [
                       Text(
@@ -66,7 +80,7 @@ class LoginScreen extends StatelessWidget {
                   defaultTextField(
                       label: 'E-mail',
                       type: TextInputType.emailAddress,
-                      vector:'assets/images/Vector.png' ,
+                      vector: 'assets/images/Vector.png',
                       validate: (value) {},
                       controller: emailController),
                   const SizedBox(
@@ -80,26 +94,34 @@ class LoginScreen extends StatelessWidget {
                     suffixPress: () {},
                     suffixColor: backGroundColor,
                     suffix: Icons.visibility_off_outlined,
-                    vector:'assets/images/lockVector.png' ,
+                    vector: 'assets/images/lockVector.png',
                     //prefix: Icons.lock_outline_rounded,
                     validate: (value) {},
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      TextButton(onPressed:() {}, child: Text('Forget Password',style: TextStyle(decoration: TextDecoration.underline)),),
+                      TextButton(
+                        onPressed: () {
+                          Get.offAndToNamed(Routes.forgotPasswordScreen);
+                        },
+                        child: Text('Forget Password',
+                            style: TextStyle(
+                                decoration: TextDecoration.underline)),
+                      ),
                     ],
                   ),
                   const SizedBox(
                     height: 32.0,
                   ),
                   defaultButton(
-                      onTap: () {  },
+                      onTap: () {
+                        Get.offAndToNamed(Routes.loginScreen);
+                      },
                       text: 'Login',
                       width: 335,
                       background: mainColor,
-                      textColor: Colors.white
-                  ),
+                      textColor: Colors.white),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -108,10 +130,9 @@ class LoginScreen extends StatelessWidget {
                               color: Colors.black,
                               fontSize: 13,
                               fontWeight: FontWeight.w500)),
-
                       TextButton(
                         onPressed: () {
-                          // Get.offAndToNamed(Routes.loginScreen);
+                          Get.offAndToNamed(Routes.signupScreen);
                         },
                         child: const Text(
                           'Sign Up',
@@ -120,19 +141,21 @@ class LoginScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-
-                  Padding(
-                    padding: const EdgeInsets.only(top: 90),
-                    child: Stack(children:const [
-                      Padding(
-                        padding: EdgeInsets.only(right: 222,top: 5),
-                        child: Image(image: AssetImage('assets/images/rectanglebottom.png')),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(right: 241.0),
-                        child: Image(image: AssetImage('assets/images/rectanglebottomshadowpng.png')),
-                      ),
-                    ] ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Stack(children: const [
+                        Image(
+                            image: AssetImage(
+                                'assets/images/rectanglebottom.png')),
+                        Positioned(
+                          top: 0.5,
+                          child: Image(
+                              image: AssetImage(
+                                  'assets/images/rectanglebottomshadowpng.png')),
+                        ),
+                      ]),
+                    ],
                   ),
                 ],
               ),
