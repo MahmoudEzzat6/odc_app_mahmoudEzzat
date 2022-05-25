@@ -27,9 +27,8 @@ class MyApp extends StatelessWidget {
 
         primarySwatch: Colors.orange,
       ),
-      home: NewPasswordScreen(),
-      // initialRoute: AppRoute.splashScreen,
-      // getPages:AppRoute.routes
+      initialRoute: AppRoute.splashScreen,
+      getPages:AppRoute.routes
     );
   }
 }
